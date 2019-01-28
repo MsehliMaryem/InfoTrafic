@@ -16,40 +16,37 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ant.technology.infotrafic.entities.TypeStation;
 import com.ant.technology.infotrafic.services.TypeStationService;
 import com.ant.technology.infotrafic.services.dto.StringResponse;
+
 @CrossOrigin("http://localhost:4200")
 @RestController
-@RequestMapping(value="/typeStation")
+@RequestMapping(value = "/typeStation")
 public class TypeStationController {
-	
+
 	@Autowired
 	private TypeStationService typeStationService;
 
 //	@RequestMapping(value="/list" ,method=RequestMethod.GET)
-	@GetMapping(value="/list")
-	public List<TypeStation> findAll(){
-		
+	@GetMapping(value = "/list")
+	public List<TypeStation> findAll() {
+
 		return typeStationService.findAll();
 	}
-	
-	@PostMapping(value="/add")
+
+	@PostMapping(value = "/add")
 	public StringResponse save(@RequestBody TypeStation typeStation) {
-		
+
 		return typeStationService.save(typeStation);
 	}
-	
-	
-	
-	@PutMapping(value="/update")
+
+	@PutMapping(value = "/update")
 	public StringResponse update(@RequestBody TypeStation typeStation) {
-		
+
 		return typeStationService.update(typeStation);
 	}
-	
-	
-	
-	@DeleteMapping(value="/delete/{code}")
+
+	@DeleteMapping(value = "/delete/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
-		
+
 		return typeStationService.delete(code);
 	}
 }
