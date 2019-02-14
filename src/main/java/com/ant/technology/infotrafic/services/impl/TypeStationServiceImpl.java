@@ -5,10 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.TypeStation;
 import com.ant.technology.infotrafic.repositories.TypeStationRepository;
 import com.ant.technology.infotrafic.services.TypeStationService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
 @Service
 public class TypeStationServiceImpl implements TypeStationService {
@@ -52,7 +52,7 @@ public class TypeStationServiceImpl implements TypeStationService {
 	@Override
 	public StringResponse delete(long code) {
 
-		List<TypeStation> list = typeStationRepository.findByStationServicesIsNotNull();
+		List<TypeStation> list = typeStationRepository.findStationAffecter(code);
 		if (!list.isEmpty()) {
 			return new StringResponse(false, "Type station service associé a un ou plusieur station");
 		}

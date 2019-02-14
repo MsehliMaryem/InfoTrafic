@@ -10,6 +10,8 @@ import javax.persistence.OneToMany;
 public class Abonnee extends Personne implements Serializable {
 	@OneToMany(mappedBy = "abonne")
 	private List<DemandeTaxi> demandeTaxis;
+	
+	
 	@OneToMany(mappedBy = "abonne")
 	private List<Alerte> alertes;
 

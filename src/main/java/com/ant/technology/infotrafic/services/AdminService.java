@@ -2,9 +2,8 @@ package com.ant.technology.infotrafic.services;
 
 import java.util.List;
 
-
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Admin;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
 public interface AdminService {
 	public StringResponse save(Admin admin);

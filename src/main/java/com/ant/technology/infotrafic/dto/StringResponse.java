@@ -1,4 +1,4 @@
-package com.ant.technology.infotrafic.services.dto;
+package com.ant.technology.infotrafic.dto;
 
 import java.io.Serializable;
 

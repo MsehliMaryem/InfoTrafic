@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Abonnee;
 import com.ant.technology.infotrafic.services.AbonneService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
@@ -24,25 +24,25 @@ public class AbonneeController {
 	@Autowired
 	private AbonneService abonneService;
 
-	@GetMapping(value = "/listAbonnnee")
+	@GetMapping(value = "/list")
 	public List<Abonnee> findAll() {
 
 		return abonneService.findAll();
 	}
 
-	@PostMapping(value = "/addAbonnee")
+	@PostMapping(value = "/add")
 	public StringResponse save(@RequestBody Abonnee abonnee) {
 
 		return abonneService.save(abonnee);
 	}
 
-	@DeleteMapping(value = "/deleteAbonnee/{code}")
-	public StringResponse delete(@PathVariable("code") long code) {
+//	@DeleteMapping(value = "/deleteAbonnee/{code}")
+//	public StringResponse delete(@PathVariable("code") long code) {
+//
+//		return abonneService.delete(code);
+//	}
 
-		return abonneService.delete(code);
-	}
-
-	@PutMapping(value = "/updateAbonnee")
+	@PutMapping(value = "/update")
 	public StringResponse update(@RequestBody Abonnee abonne) {
 
 		return abonneService.update(abonne);

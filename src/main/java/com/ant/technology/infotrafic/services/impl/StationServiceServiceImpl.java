@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.NumeroUrgence;
 import com.ant.technology.infotrafic.entities.StationService;
 import com.ant.technology.infotrafic.repositories.NumeroUrgenceRepository;
 import com.ant.technology.infotrafic.repositories.StationServiceRepository;
 import com.ant.technology.infotrafic.services.StationServiceService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 @Service
 public class StationServiceServiceImpl implements StationServiceService{
 	@Autowired

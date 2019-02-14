@@ -3,6 +3,7 @@ package com.ant.technology.infotrafic.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,9 @@ public class DemandeTaxi implements Serializable {
 	private Date date;
 	private double attitude;
 	private double longitude;
+	private String etat;
+	@Column(columnDefinition = "TEXT")
+	private String reclamation;
 	@ManyToOne
 	private Abonnee abonne;
 	
@@ -75,6 +79,22 @@ public class DemandeTaxi implements Serializable {
 
 	public void setTaxi(Taxi taxi) {
 		this.taxi = taxi;
+	}
+
+	public String getEtat() {
+		return etat;
+	}
+
+	public void setEtat(String etat) {
+		this.etat = etat;
+	}
+
+	public String getReclamation() {
+		return reclamation;
+	}
+
+	public void setReclamation(String reclamation) {
+		this.reclamation = reclamation;
 	}
 	
 }

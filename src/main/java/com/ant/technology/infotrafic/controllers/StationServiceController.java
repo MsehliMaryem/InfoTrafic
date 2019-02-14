@@ -13,35 +13,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.NumeroUrgence;
 import com.ant.technology.infotrafic.entities.StationService;
 import com.ant.technology.infotrafic.services.NumeroUrgenceService;
 import com.ant.technology.infotrafic.services.StationServiceService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
-@CrossOrigin("http://localhost:4200")
+
 @RestController
-@RequestMapping(value = "/stationservice")
+@RequestMapping(value = "/stationService")
 public class StationServiceController {
 	@Autowired
 	private StationServiceService stationServiceService ;
-	@GetMapping(value = "/list")
+	@GetMapping
 	public List<StationService> findAll() {
 
 		return stationServiceService.findAll();
 	}
-	@PostMapping(value = "/add")
+	@PostMapping
 	public StringResponse save(@RequestBody StationService stationService) {
 
 		return stationServiceService.save(stationService);
 	}
 
-	@PutMapping(value = "/update")
+	@PutMapping
 	public StringResponse update(@RequestBody StationService stationService) {
 
 		return stationServiceService.save(stationService);
 	}
-	@DeleteMapping(value = "/delete/{code}")
+	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 
 		return stationServiceService.delete(code);

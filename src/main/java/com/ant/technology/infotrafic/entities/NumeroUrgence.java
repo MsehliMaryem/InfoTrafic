@@ -2,8 +2,11 @@ package com.ant.technology.infotrafic.entities;
 
 import java.io.Serializable;
 
+import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +14,8 @@ import javax.persistence.Table;
 @Table(name = "numero_urgence")
 public class NumeroUrgence implements Serializable {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private long num;
 	@Column(unique = true)
 	private String libelle;

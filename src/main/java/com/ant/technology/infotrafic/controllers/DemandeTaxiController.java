@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.ChauffeurTaxi;
 import com.ant.technology.infotrafic.entities.DemandeTaxi;
 import com.ant.technology.infotrafic.services.DemandeTaxiService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
 @CrossOrigin("http://localhost:4200")
 @RestController

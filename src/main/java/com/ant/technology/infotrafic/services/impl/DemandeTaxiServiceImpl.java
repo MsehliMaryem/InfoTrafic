@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Admin;
 import com.ant.technology.infotrafic.entities.Alerte;
 import com.ant.technology.infotrafic.entities.DemandeTaxi;
 import com.ant.technology.infotrafic.repositories.DemandeTaxiRepository;
 import com.ant.technology.infotrafic.services.DemandeTaxiService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
 @Service
 public class DemandeTaxiServiceImpl implements DemandeTaxiService {

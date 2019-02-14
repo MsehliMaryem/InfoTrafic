@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "type_alerte")
 public class TypeAlerte implements Serializable {
@@ -17,6 +19,7 @@ public class TypeAlerte implements Serializable {
 	private long idType;
 	@Column(unique = true)
 	private String nom;
+	@JsonIgnore
 	@OneToMany(mappedBy = "typeAlerte")
 	private List<Alerte> alertes;
 

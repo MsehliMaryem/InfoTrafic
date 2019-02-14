@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.DemandeTaxi;
 import com.ant.technology.infotrafic.entities.NumeroUrgence;
 import com.ant.technology.infotrafic.repositories.DemandeTaxiRepository;
 import com.ant.technology.infotrafic.repositories.NumeroUrgenceRepository;
 import com.ant.technology.infotrafic.services.NumeroUrgenceService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 @Service
 public class NumeroUrgenceServiceImpl implements NumeroUrgenceService {
 	@Autowired
@@ -30,12 +30,9 @@ public class NumeroUrgenceServiceImpl implements NumeroUrgenceService {
 
 	@Override
 	public StringResponse update(NumeroUrgence numeroUrgence) {
-		List<NumeroUrgence> list = numeroUrgenceRepository.findByNum(numeroUrgence.getNum());
-		if (!list.isEmpty()) {
-			return new StringResponse(false, "Aucune modification detecté");
-		}
+		
 
-		list = numeroUrgenceRepository.findByNum(numeroUrgence.getNum());
+		List<NumeroUrgence>  list = numeroUrgenceRepository.findByNum(numeroUrgence.getNum());
 		if (!list.isEmpty()) {
 			return new StringResponse(false, "numero d'urgence déja existe");
 		}

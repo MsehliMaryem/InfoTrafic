@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ant.technology.infotrafic.entities.Abonnee;
-import com.ant.technology.infotrafic.entities.TypeStation;
 
 public interface AbonneRepository extends JpaRepository<Abonnee, Long> {
-	
-public List<Abonnee> findByNom(String nom);
-public List<Abonnee> findByNomAndId(String nom ,long id);
-public List<Abonnee> findById(long id);
-public List<Abonnee> findBySignalAlertesIsNotNull();
+
+
+public List<Abonnee> findByEmail(String email);
+public List<Abonnee> findByLogin(String login);
+public List<Abonnee> findByEmailAndId(String email ,long id);
+public List<Abonnee> findByLoginAndId(String login ,long id);
+
+
+
 }

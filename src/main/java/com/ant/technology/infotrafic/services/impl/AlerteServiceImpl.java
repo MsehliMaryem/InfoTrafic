@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Alerte;
 import com.ant.technology.infotrafic.entities.TypeStation;
 import com.ant.technology.infotrafic.repositories.AlerteRepository;
 
 import com.ant.technology.infotrafic.services.AlerteService;
-import com.ant.technology.infotrafic.services.dto.StringResponse;
 
 @Service
 public class AlerteServiceImpl implements AlerteService {

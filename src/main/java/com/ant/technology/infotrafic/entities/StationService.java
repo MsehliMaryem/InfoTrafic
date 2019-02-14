@@ -17,12 +17,9 @@ public class StationService implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long code;
-	@Column(unique = true)
 	private String nom;
-	@Column(unique = true)
 	private double longitude;
-	@Column(unique = true)
-	private double lattitude;
+	private double latitude;
 	@ManyToOne
 	@JoinColumn(name = "id_type_station")
 	private TypeStation typeStation;
@@ -51,12 +48,12 @@ public class StationService implements Serializable {
 		this.longitude = longitude;
 	}
 
-	public double getLattitude() {
-		return lattitude;
+	public double getLatitude() {
+		return latitude;
 	}
 
-	public void setLattitude(double lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(double lattitude) {
+		this.latitude = lattitude;
 	}
 
 	public TypeStation getTypeStation() {
