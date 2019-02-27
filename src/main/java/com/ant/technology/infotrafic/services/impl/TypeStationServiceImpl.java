@@ -1,18 +1,24 @@
 package com.ant.technology.infotrafic.services.impl;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.TypeStation;
 import com.ant.technology.infotrafic.repositories.TypeStationRepository;
 import com.ant.technology.infotrafic.services.TypeStationService;
 
+
 @Service
 public class TypeStationServiceImpl implements TypeStationService {
-
+	private final Path rootLocation = Paths.get("upload");
 	@Autowired
 	private TypeStationRepository typeStationRepository;
 
@@ -67,5 +73,16 @@ public class TypeStationServiceImpl implements TypeStationService {
 		// TODO Auto-generated method stub
 		return typeStationRepository.findAll();
 	}
-
+	@Override
+	public void store(MultipartFile file) {
+		try {
+			
+		//	Files.createDirectory(rootLocation);
+			Files.copy(file.getInputStream(), this.rootLocation.resolve(file.getOriginalFilename()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }

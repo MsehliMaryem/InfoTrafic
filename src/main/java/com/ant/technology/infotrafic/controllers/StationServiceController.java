@@ -3,7 +3,6 @@ package com.ant.technology.infotrafic.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
-import com.ant.technology.infotrafic.entities.NumeroUrgence;
 import com.ant.technology.infotrafic.entities.StationService;
-import com.ant.technology.infotrafic.services.NumeroUrgenceService;
 import com.ant.technology.infotrafic.services.StationServiceService;
 
 
@@ -39,7 +36,7 @@ public class StationServiceController {
 	@PutMapping
 	public StringResponse update(@RequestBody StationService stationService) {
 
-		return stationServiceService.save(stationService);
+		return stationServiceService.update(stationService);
 	}
 	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
