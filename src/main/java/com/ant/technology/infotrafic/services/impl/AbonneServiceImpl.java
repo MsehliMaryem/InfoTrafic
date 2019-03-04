@@ -3,6 +3,7 @@ package com.ant.technology.infotrafic.services.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
@@ -16,6 +17,8 @@ import com.ant.technology.infotrafic.utils.CodeGenerator;
 public class AbonneServiceImpl implements AbonneService {
 	@Autowired
 	private AbonneRepository abonneRepository;
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public StringResponse save(Abonnee abonnee) {
@@ -33,6 +36,11 @@ public class AbonneServiceImpl implements AbonneService {
 		}
 		String code = CodeGenerator.generatedCode();
 		abonnee.setCode(code);
+		
+		String pwd = bCryptPasswordEncoder.encode(abonnee.getPassword());
+		abonnee.setPassword(pwd);
+		
+		
 		abonneRepository.save(abonnee);
 
 		return new StringResponseAbonnee(true, "Opération effectuée avec succès", abonnee.getCode(),
@@ -50,7 +58,7 @@ public class AbonneServiceImpl implements AbonneService {
 			}
 		}
 
-		list = abonneRepository.findByEmailAndId(abonnee.getLogin(), abonnee.getId());
+		list = abonneRepository.findByEmailAndId(abonnee.getEmail(), abonnee.getId());
 		if (list.isEmpty()) {
 			list = abonneRepository.findByEmail(abonnee.getEmail());
 			if (!list.isEmpty()) {

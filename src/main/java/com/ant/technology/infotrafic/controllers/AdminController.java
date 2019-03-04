@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Admin;
-import com.ant.technology.infotrafic.entities.TypeStation;
+
 import com.ant.technology.infotrafic.services.AdminService;
-import com.ant.technology.infotrafic.services.TypeStationService;
+
 
 @CrossOrigin("http://localhost:4200")
 @RestController
@@ -25,22 +25,22 @@ import com.ant.technology.infotrafic.services.TypeStationService;
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
-	@GetMapping(value = "/list")
+	@GetMapping
 	public List<Admin> findAll() {
 
 		return adminService.findAll();
 	}
-	@PostMapping(value = "/add")
+	@PostMapping
 	public StringResponse save(@RequestBody Admin admin) {
 
 		return adminService.save(admin);
 	}
-	@PutMapping(value = "/update")
+	@PutMapping
 	public StringResponse update(@RequestBody Admin admin) {
 
 		return adminService.update(admin);
 	}
-	@DeleteMapping(value = "/delete/{code}")
+	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 
 		return adminService.delete(code);

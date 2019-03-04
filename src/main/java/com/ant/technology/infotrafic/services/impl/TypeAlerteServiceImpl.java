@@ -23,7 +23,7 @@ public class TypeAlerteServiceImpl implements TypeAlerteService{
 		List<TypeAlerte> list = typeAlerteRepository.findByNom(typeAlerte.getNom());
 
 		if (!list.isEmpty()) {
-			return new StringResponse(false, "Nom type station déja existe");
+			return new StringResponse(false, "Nom type alerte déja existe");
 		}
 
 		typeAlerteRepository.save(typeAlerte);

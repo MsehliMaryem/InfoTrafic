@@ -18,7 +18,7 @@ import com.ant.technology.infotrafic.entities.TypeAlerte;
 import com.ant.technology.infotrafic.services.TypeAlerteService;
 
 @RestController
-@RequestMapping(value = "/c")
+@RequestMapping(value = "/typeAlerte")
 public class TypeAlerteController {
 	@Autowired
 	private TypeAlerteService typeAlerteService ;

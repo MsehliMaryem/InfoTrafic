@@ -8,6 +8,10 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Abonnee extends Personne implements Serializable {
+	
+	
+
+
 	@OneToMany(mappedBy = "abonne")
 	private List<DemandeTaxi> demandeTaxis;
 	
@@ -41,6 +45,8 @@ public class Abonnee extends Personne implements Serializable {
 	public void setSignalAlertes(List<SignalAlerte> signalAlertes) {
 		this.signalAlertes = signalAlertes;
 	}
+
+
 
 	
 	
