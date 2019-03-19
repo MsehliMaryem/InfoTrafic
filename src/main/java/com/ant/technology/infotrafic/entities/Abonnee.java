@@ -6,22 +6,21 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Abonnee extends Personne implements Serializable {
-	
-	
 
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "abonne")
 	private List<DemandeTaxi> demandeTaxis;
-	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "abonne")
 	private List<Alerte> alertes;
-
-	@OneToMany(mappedBy="abonne")
+	@JsonIgnore
+	@OneToMany(mappedBy = "abonne")
 	private List<SignalAlerte> signalAlertes;
-	
+
 	public List<Alerte> getAlertes() {
 		return alertes;
 	}
@@ -46,8 +45,4 @@ public class Abonnee extends Personne implements Serializable {
 		this.signalAlertes = signalAlertes;
 	}
 
-
-
-	
-	
 }

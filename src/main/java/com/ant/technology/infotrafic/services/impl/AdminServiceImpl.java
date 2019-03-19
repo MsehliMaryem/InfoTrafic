@@ -40,7 +40,7 @@ public class AdminServiceImpl implements AdminService {
 		String pwd = CodeGenerator.generatedCode();
 		String password = bCryptPasswordEncoder.encode(pwd);
 		admin.setPassword(password);
-
+		admin.setEnabled(true);
 		adminRepository.save(admin);
 
 		return new StringResponseAdmin(true, "Opération effectuée avec succès", admin.getLogin(), pwd,

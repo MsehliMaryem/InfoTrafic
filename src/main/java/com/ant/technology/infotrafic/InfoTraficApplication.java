@@ -23,28 +23,5 @@ public class InfoTraficApplication  {
 		SpringApplication.run(InfoTraficApplication.class, args);
 	}
 
-	@Bean
-	public BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 	
-	
-	
-	@Bean
-	public CorsFilter corsFilter() {
-		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		final CorsConfiguration configuration = new CorsConfiguration();
-		configuration.setAllowCredentials(true);
-		configuration.addAllowedOrigin("*");
-		configuration.addAllowedHeader("*");
-
-		configuration.addAllowedMethod("*");
-
-		// configuration.addExposedHeader("Access-Control-Allow-Origin");
-		// configuration.addExposedHeader("Access-Control-Allow-Credentials");
-		configuration.addExposedHeader("Authorization");
-		source.registerCorsConfiguration("/**", configuration);
-		return new CorsFilter(source);
-	}
-
 }

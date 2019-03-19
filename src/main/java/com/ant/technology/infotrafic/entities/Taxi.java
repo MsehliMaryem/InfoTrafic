@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Taxi implements Serializable {
 
@@ -19,11 +21,13 @@ public class Taxi implements Serializable {
 	private String modele;
 	private int nbplace;
 	private boolean disponibilite;
+	@JsonIgnore
 	@OneToMany(mappedBy = "taxi")
 	private List<ChauffeurTaxi> chauffeurTaxis;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "taxi")
-private List<DemandeTaxi> demandeTaxis ;
+	private List<DemandeTaxi> demandeTaxis;
+
 	public List<DemandeTaxi> getDemandeTaxis() {
 		return demandeTaxis;
 	}

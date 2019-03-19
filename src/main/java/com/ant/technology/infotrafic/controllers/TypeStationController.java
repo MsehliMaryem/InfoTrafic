@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,18 +37,19 @@ public class TypeStationController {
 		return typeStationService.findAll();
 	}
 
+	//@PreAuthorize("hasRole('ROLE_Admin')")
 	@PostMapping
 	public StringResponse save(@RequestBody TypeStation typeStation) {
 
 		return typeStationService.save(typeStation);
 	}
-
+//	@PreAuthorize("hasRole('ROLE_Admin')")
 	@PutMapping
 	public StringResponse update(@RequestBody TypeStation typeStation) {
 
 		return typeStationService.update(typeStation);
 	}
-
+	//@PreAuthorize("hasRole('ROLE_Admin')")
 	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 

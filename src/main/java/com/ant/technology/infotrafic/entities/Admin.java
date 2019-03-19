@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Admin extends Personne implements Serializable {
 	@Column(unique = true)
@@ -14,7 +16,7 @@ public class Admin extends Personne implements Serializable {
 	
 	@Column(name="super_admin")
 	private boolean superAdmin;
-	
+	@JsonIgnore
 	@OneToMany(mappedBy="admin")
 	private List<Alerte> alertes;
 	
