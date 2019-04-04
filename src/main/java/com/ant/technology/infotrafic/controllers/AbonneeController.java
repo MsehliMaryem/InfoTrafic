@@ -36,11 +36,6 @@ public class AbonneeController {
 		return abonneService.save(abonnee);
 	}
 
-//	@DeleteMapping(value = "/deleteAbonnee/{code}")
-//	public StringResponse delete(@PathVariable("code") long code) {
-//
-//		return abonneService.delete(code);
-//	}
 
 	@PutMapping
 	public StringResponse update(@RequestBody Abonnee abonne) {

@@ -11,6 +11,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "signal_alerte")
 public class SignalAlerte {
@@ -20,7 +22,9 @@ public class SignalAlerte {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_signal")
 	private Date dateSignal;
+	private String cause;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_alerte", insertable = false, updatable = false, nullable = false)
 	private Alerte alerte;
@@ -51,7 +55,13 @@ public class SignalAlerte {
 	public void setAbonne(Abonnee abonne) {
 		this.abonne = abonne;
 	}
-
+	public String getCause() {
+		return cause;
+	}
+	public void setCause(String cause) {
+		this.cause = cause;
+	}
+	
 	
 	
 }

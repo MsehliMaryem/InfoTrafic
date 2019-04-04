@@ -14,7 +14,7 @@ import org.springframework.web.filter.CorsFilter;
 import com.ant.technology.infotrafic.repositories.TypeStationRepository;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude= {SecurityAutoConfiguration.class})
+//@EnableAutoConfiguration(exclude= {SecurityAutoConfiguration.class})
 public class InfoTraficApplication  {
 	@Autowired
 	private TypeStationRepository typeStationRepository;

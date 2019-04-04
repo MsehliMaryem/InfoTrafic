@@ -26,6 +26,7 @@ public class Alerte implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "date_alerte")
 	private Date dateAlerte;
+	private boolean enabled;
 	@ManyToOne
 	@JoinColumn(name = "id_abonnee", nullable = false)
 	private Abonnee abonne;
@@ -33,7 +34,7 @@ public class Alerte implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_admin", nullable = true)
 	private Admin admin;
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "alerte")
 	private List<SignalAlerte> signalAlertes;
 
@@ -88,5 +89,15 @@ public class Alerte implements Serializable {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	
+	
 
 }

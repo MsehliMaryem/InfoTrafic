@@ -15,10 +15,12 @@ import javax.persistence.Table;
 public class NumeroUrgence implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	private long num;
 	@Column(unique = true)
 	private String libelle;
+
+	
 	public long getNum() {
 		return num;
 	}
@@ -31,6 +33,14 @@ public class NumeroUrgence implements Serializable {
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
 	}
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 }

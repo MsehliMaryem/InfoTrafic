@@ -11,7 +11,7 @@ public interface AlerteService {
 	public StringResponse update(Alerte alerte);
 
 	public StringResponse delete(long code);
-
+	public StringResponse activate(Alerte alerte);
 	public List<Alerte> findAll();
 
 }

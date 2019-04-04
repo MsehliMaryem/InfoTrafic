@@ -4,11 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.ant.technology.infotrafic.dto.StringResponse;
-import com.ant.technology.infotrafic.entities.DemandeTaxi;
 import com.ant.technology.infotrafic.entities.NumeroUrgence;
-import com.ant.technology.infotrafic.repositories.DemandeTaxiRepository;
 import com.ant.technology.infotrafic.repositories.NumeroUrgenceRepository;
 import com.ant.technology.infotrafic.services.NumeroUrgenceService;
 @Service
@@ -17,7 +14,7 @@ public class NumeroUrgenceServiceImpl implements NumeroUrgenceService {
 	private NumeroUrgenceRepository numeroUrgenceRepository;
 	@Override
 	public StringResponse save(NumeroUrgence numeroUrgence) {
-		List<NumeroUrgence> list = numeroUrgenceRepository.findByNum(numeroUrgence.getNum());
+		List<NumeroUrgence> list = numeroUrgenceRepository.findByLibelle(numeroUrgence.getLibelle());
 
 		if (!list.isEmpty()) {
 			return new StringResponse(false, "Numero d'urgence déja existe");
@@ -32,7 +29,7 @@ public class NumeroUrgenceServiceImpl implements NumeroUrgenceService {
 	public StringResponse update(NumeroUrgence numeroUrgence) {
 		
 
-		List<NumeroUrgence>  list = numeroUrgenceRepository.findByNum(numeroUrgence.getNum());
+		List<NumeroUrgence>  list = numeroUrgenceRepository.findByNumAndLibelle(numeroUrgence.getNum(),numeroUrgence.getLibelle());
 		if (!list.isEmpty()) {
 			return new StringResponse(false, "numero d'urgence déja existe");
 		}
@@ -44,7 +41,7 @@ public class NumeroUrgenceServiceImpl implements NumeroUrgenceService {
 	@Override
 	public StringResponse delete(long code) {
 		// TODO Auto-generated method stub
-		List<NumeroUrgence> list = numeroUrgenceRepository.findByNum(code);
+		List<NumeroUrgence> list = numeroUrgenceRepository.findById(code);
 
 		if (list.isEmpty()) {
 			return new StringResponse(false, "Numero d'urgence introuvable ");

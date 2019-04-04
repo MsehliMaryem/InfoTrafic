@@ -16,6 +16,8 @@ public class Admin extends Personne implements Serializable {
 	
 	@Column(name="super_admin")
 	private boolean superAdmin;
+	
+	
 	@JsonIgnore
 	@OneToMany(mappedBy="admin")
 	private List<Alerte> alertes;

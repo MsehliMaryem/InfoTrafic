@@ -23,18 +23,18 @@ import com.ant.technology.infotrafic.services.ChauffeurTaxiService;
 public class ChauffeurTaxiController {
 	@Autowired
 	private ChauffeurTaxiService chauffeurtaxiService ;
-	@GetMapping(value = "/list")
+	@GetMapping
 	public List<ChauffeurTaxi> findAll() {
 
 		return chauffeurtaxiService.findAll();
 	}
-	@PostMapping(value = "/add")
+	@PostMapping
 	public StringResponse save(@RequestBody ChauffeurTaxi chauffeurtaxi) {
 
 		return chauffeurtaxiService.save(chauffeurtaxi);
 	}
 
-	@PutMapping(value = "/update")
+	@PutMapping
 	public StringResponse update(@RequestBody ChauffeurTaxi chauffeurtaxi) {
 
 		return chauffeurtaxiService.save(chauffeurtaxi);

@@ -123,7 +123,11 @@ public class Personne implements Serializable, UserDetails {
 		List<GrantedAuthority> authorities = new ArrayList<>();
 
 		if (this instanceof Admin) {
-			authorities.add(new SimpleGrantedAuthority("ROLE_Admin"));
+			if (((Admin) this).isSuperAdmin()) {
+				authorities.add(new SimpleGrantedAuthority("ROLE_SuperAdmin"));
+			} else {
+				authorities.add(new SimpleGrantedAuthority("ROLE_Admin"));
+			}
 		}
 		if (this instanceof Abonnee) {
 			authorities.add(new SimpleGrantedAuthority("ROLE_Abonnee"));

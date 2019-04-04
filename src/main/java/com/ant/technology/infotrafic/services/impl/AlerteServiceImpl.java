@@ -1,5 +1,6 @@
 package com.ant.technology.infotrafic.services.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Alerte;
-import com.ant.technology.infotrafic.entities.TypeStation;
 import com.ant.technology.infotrafic.repositories.AlerteRepository;
 
 import com.ant.technology.infotrafic.services.AlerteService;
@@ -19,13 +19,9 @@ public class AlerteServiceImpl implements AlerteService {
 
 	@Override
 	public StringResponse save(Alerte alerte) {
-		// TODO Auto-generated method stub
-		List<Alerte> list = alerteRepository.findByIdAlerte(alerte.getIdAlerte());
 
-		if (!list.isEmpty()) {
-			return new StringResponse(false, "alerte déja existe");
-		}
-
+		alerte.setDateAlerte(new Date());
+		alerte.setEnabled(true);
 		alerteRepository.save(alerte);
 
 		return new StringResponse(true, "Opération effectuée avec succès");
@@ -33,18 +29,8 @@ public class AlerteServiceImpl implements AlerteService {
 
 	@Override
 	public StringResponse update(Alerte alerte) {
-		List<Alerte> list = alerteRepository.findByIdAlerte(alerte.getIdAlerte());
-		if (!list.isEmpty()) {
-			return new StringResponse(false, "Aucune modification detecté");
-		}
-
-		list = alerteRepository.findByIdAlerte(alerte.getIdAlerte());
-		if (!list.isEmpty()) {
-			return new StringResponse(false, "alerte déja existe");
-		}
 
 		alerteRepository.save(alerte);
-		
 
 		return new StringResponse(true, "Opération effectuée avec succès");
 	}
@@ -65,6 +51,15 @@ public class AlerteServiceImpl implements AlerteService {
 	public List<Alerte> findAll() {
 		return alerteRepository.findAll();
 
+	}
+
+	@Override
+	public StringResponse activate(Alerte alerte) {
+		alerteRepository.save(alerte);
+		if (alerte.isEnabled()) {
+			return new StringResponse(true, "Aelerte desactivée avec succès");
+		}
+		return new StringResponse(true, "Aelerte activée avec succès");
 	}
 
 }

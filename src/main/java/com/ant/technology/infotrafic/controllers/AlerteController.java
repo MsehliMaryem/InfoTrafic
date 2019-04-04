@@ -21,29 +21,34 @@ import com.ant.technology.infotrafic.services.AlerteService;
 @RestController
 @RequestMapping(value = "/alerte")
 public class AlerteController {
+	public AlerteController(AlerteService alerteService) {
+		super();
+		this.alerteService = alerteService;
+	}
+
 	@Autowired
 	private AlerteService alerteService;
 
 //	@RequestMapping(value="/list" ,method=RequestMethod.GET)
-	@GetMapping(value = "/list")
+	@GetMapping
 	public List<Alerte> findAll() {
 
 		return alerteService.findAll();
 	}
 
-	@PostMapping(value = "/add")
+	@PostMapping
 	public StringResponse save(@RequestBody Alerte alerte) {
 
 		return alerteService.save(alerte);
 	}
 
-	@PutMapping(value = "/update")
+	@PutMapping
 	public StringResponse update(@RequestBody Alerte alerte) {
 
 		return alerteService.update(alerte);
 	}
 
-	@DeleteMapping(value = "/delete/{code}")
+	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 
 		return alerteService.delete(code);
