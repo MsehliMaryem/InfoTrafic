@@ -37,19 +37,19 @@ public class TypeStationController {
 		return typeStationService.findAll();
 	}
 
-	//@PreAuthorize("hasRole('ROLE_Admin')")
+	@PreAuthorize("hasRole('ROLE_SuperAdmin') or hasRole('ROLE_Admin')")
 	@PostMapping
 	public StringResponse save(@RequestBody TypeStation typeStation) {
 
 		return typeStationService.save(typeStation);
 	}
-//	@PreAuthorize("hasRole('ROLE_Admin')")
+	@PreAuthorize("hasRole('ROLE_SuperAdmin') or hasRole('ROLE_Admin')")
 	@PutMapping
 	public StringResponse update(@RequestBody TypeStation typeStation) {
 
 		return typeStationService.update(typeStation);
 	}
-	//@PreAuthorize("hasRole('ROLE_Admin')")
+	@PreAuthorize("hasRole('ROLE_SuperAdmin') or hasRole('ROLE_Admin')")
 	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 

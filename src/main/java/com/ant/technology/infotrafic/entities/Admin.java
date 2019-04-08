@@ -18,19 +18,6 @@ public class Admin extends Personne implements Serializable {
 	private boolean superAdmin;
 	
 	
-	@JsonIgnore
-	@OneToMany(mappedBy="admin")
-	private List<Alerte> alertes;
-	
-
-	public List<Alerte> getAlertes() {
-		return alertes;
-	}
-
-	public void setAlertes(List<Alerte> alertes) {
-		this.alertes = alertes;
-	}
-
 	public String getMatricule() {
 		return matricule;
 	}

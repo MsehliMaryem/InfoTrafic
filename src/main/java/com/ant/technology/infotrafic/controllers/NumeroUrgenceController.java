@@ -3,6 +3,7 @@ package com.ant.technology.infotrafic.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,17 +32,19 @@ public class NumeroUrgenceController {
 
 		return numeroUrgenceService.findAll();
 	}
+	@PreAuthorize("hasRole('ROLE_SuperAdmin') or hasRole('ROLE_Admin')")
 	@PostMapping
 	public StringResponse save(@RequestBody NumeroUrgence numeroUrgence) {
 
 		return numeroUrgenceService.save(numeroUrgence);
 	}
-
+	@PreAuthorize("hasRole('ROLE_SuperAdmin') or hasRole('ROLE_Admin')")
 	@PutMapping
 	public StringResponse update(@RequestBody NumeroUrgence numeroUrgence) {
 
 		return numeroUrgenceService.save(numeroUrgence);
 	}
+	@PreAuthorize("hasRole('ROLE_SuperAdmin') or hasRole('ROLE_Admin')")
 	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 

@@ -23,26 +23,30 @@ import com.ant.technology.infotrafic.services.DemandeTaxiService;
 @RequestMapping(value = "/demandetaxi")
 public class DemandeTaxiController {
 	@Autowired
-	private DemandeTaxiService demandetaxiService ;
+	private DemandeTaxiService demandetaxiService;
+
 	@GetMapping(value = "/list")
 	public List<DemandeTaxi> findAll() {
 
 		return demandetaxiService.findAll();
 	}
+
 	@PostMapping(value = "/add")
 	public StringResponse save(@RequestBody DemandeTaxi demandetaxi) {
 
 		return demandetaxiService.save(demandetaxi);
 	}
+
 	@PutMapping(value = "/update")
 	public StringResponse update(@RequestBody DemandeTaxi demandetaxi) {
 
 		return demandetaxiService.save(demandetaxi);
 	}
+
 	@DeleteMapping(value = "/delete/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 
 		return demandetaxiService.delete(code);
 	}
-	
+
 }

@@ -57,9 +57,9 @@ public class AlerteServiceImpl implements AlerteService {
 	public StringResponse activate(Alerte alerte) {
 		alerteRepository.save(alerte);
 		if (alerte.isEnabled()) {
-			return new StringResponse(true, "Aelerte desactivée avec succès");
+			return new StringResponse(true, "Aelerte activée avec succès");
 		}
-		return new StringResponse(true, "Aelerte activée avec succès");
+		return new StringResponse(true, "Aelerte desactivée avec succès");
 	}
 
 }
