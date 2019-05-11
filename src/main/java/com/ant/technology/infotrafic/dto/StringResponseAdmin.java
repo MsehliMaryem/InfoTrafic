@@ -4,9 +4,21 @@ public class StringResponseAdmin  extends StringResponse{
 	private String login;
 	private String password;
 	private String email;
+	
+	public StringResponseAdmin(boolean success, String message) {
+		super(success, message);
+		
+	}
 	public StringResponseAdmin(boolean success, String message, String login, String password, String email) {
 		super(success, message);
 		this.login = login;
+		this.password = password;
+		this.email = email;
+	}
+	
+	public StringResponseAdmin(boolean success, String message,  String password, String email) {
+		super(success, message);
+	
 		this.password = password;
 		this.email = email;
 	}

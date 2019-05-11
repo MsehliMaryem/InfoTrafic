@@ -1,21 +1,19 @@
 package com.ant.technology.infotrafic.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.ant.technology.infotrafic.dto.PasswordDTO;
 import com.ant.technology.infotrafic.dto.StringResponse;
-import com.ant.technology.infotrafic.entities.Abonnee;
-import com.ant.technology.infotrafic.entities.Admin;
-import com.ant.technology.infotrafic.entities.ChauffeurTaxi;
+import com.ant.technology.infotrafic.dto.StringResponseAdmin;
 import com.ant.technology.infotrafic.entities.Personne;
 import com.ant.technology.infotrafic.repositories.AbonneRepository;
 import com.ant.technology.infotrafic.repositories.AdminRepository;
 import com.ant.technology.infotrafic.repositories.ChauffeurRepository;
 import com.ant.technology.infotrafic.repositories.PersonneRepository;
 import com.ant.technology.infotrafic.services.PersonneService;
+import com.ant.technology.infotrafic.utils.CodeGenerator;
 
 @Service
 public class PersonneServiceImpl implements PersonneService {
@@ -34,9 +32,8 @@ public class PersonneServiceImpl implements PersonneService {
 	public StringResponse activate(Personne personne) {
 		Personne pers = personneRepository.getOne((long) personne.getId());
 		pers.setEnabled(personne.isEnabled());
-		personneRepository.save( pers);
+		personneRepository.save(pers);
 
-			
 		if (pers.isEnabled()) {
 			return new StringResponse(true, "Compte activé avec succès");
 		}
@@ -86,6 +83,55 @@ public class PersonneServiceImpl implements PersonneService {
 
 		}
 		return new StringResponse(false, "Compte n'existe pas");
+	}
+
+	@Override
+	public StringResponseAdmin ForgotPassword(String email) {
+	
+		Personne pers = personneRepository.findByEmail(email);
+		if (pers == null) {
+			return new StringResponseAdmin(false, "Email incorrecte");
+		}
+		if(!pers.isEnabled()) {
+			return new StringResponseAdmin(false, "Votre compte est desactivé");
+		}
+
+		String code = CodeGenerator.generatedCode();
+
+		pers.setCode(code);
+
+		personneRepository.save(pers);
+		return new StringResponseAdmin(true, "email envoyé", pers.getCode(), pers.getEmail());
+	}
+
+	@Override
+	public StringResponse changeForgotPassword(PasswordDTO pwdDto) {
+
+		Personne pers = personneRepository.findByEmailAndCode(pwdDto.getEmail(), pwdDto.getCode());
+		if (pers == null) {
+			return new StringResponse(false, "Invalid code");
+		}
+
+		String pwd = passwordEncoder.encode(pwdDto.getNewPassword());
+		pers.setPassword(pwd);
+
+		personneRepository.save(pers);
+
+		return new StringResponse(true, "Mot passe modifié avec succès");
+
+	}
+
+	@Override
+	public StringResponse checkCode(String email, String code) {
+
+		Personne pers = personneRepository.findByEmailAndCode(email, code);
+		if (pers == null) {
+			return new StringResponse(false, "Invalid code");
+		}
+
+	
+
+		return new StringResponse(true, "Code valid");
 	}
 
 }

@@ -61,7 +61,32 @@ public class AspectEmail {
 				}
 			}
 		} 
+	}
+		@AfterReturning(value = "execution(* com.ant.technology.infotrafic.services.impl.PersonneServiceImpl.ForgotPassword(..))", returning = "response")
+		public void afterForgotPassword(JoinPoint joinPoint, StringResponse response) {
+			System.out.println(response.getMessage());
+			if (response instanceof StringResponseAdmin) {
+				
+				if (response.isSuccess()) {
+				
+					String login = ((StringResponseAdmin) response).getLogin();
+					String password = ((StringResponseAdmin) response).getPassword();
+					String email = ((StringResponseAdmin) response).getEmail();
+
+					String subject = "***************";
+					String object = "Code d'activation: "+password;
+					try {
+						System.out.println(email);
+					//	SendEmail.envoyerEmail(email, subject, object);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+		}
 
 	}
+	
+	
 
 }

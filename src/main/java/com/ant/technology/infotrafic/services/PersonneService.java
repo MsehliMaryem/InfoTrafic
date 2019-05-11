@@ -9,5 +9,7 @@ public interface PersonneService {
 	public StringResponse changePassword(PasswordDTO pwdDto);
 
 	public StringResponse activate(Personne personne);
-
+	public StringResponse ForgotPassword(String email);
+	public StringResponse changeForgotPassword(PasswordDTO pwdDto);
+	public StringResponse checkCode(String email, String code);
 }
