@@ -107,16 +107,6 @@ public class SendEmail {
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		
-		// ahwka b 5edmtek la9dima yab3eth
-		
-		try {
-			envoyerEmail("maryem.msehli.54@gmail.com", "test", "123");
-		} catch (MessagingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 
 }

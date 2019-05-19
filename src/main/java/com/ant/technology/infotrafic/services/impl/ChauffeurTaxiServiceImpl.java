@@ -37,7 +37,7 @@ public class ChauffeurTaxiServiceImpl implements ChauffeurTaxiService {
 
 		String pwd = bCryptPasswordEncoder.encode(chauffeurTaxi.getPassword());
 		chauffeurTaxi.setPassword(pwd);
-
+		chauffeurTaxi.setEnabled(true);
 		chauffeurRepository.save(chauffeurTaxi);
 
 		return new StringResponseAbonnee(true, "Opération effectuée avec succès", chauffeurTaxi.getCode(),

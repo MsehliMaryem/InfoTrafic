@@ -41,9 +41,9 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 		// 1. get the authentication header. Tokens are supposed to be passed in the
 		
 			String header = request.getHeader(this.header);
-		
+
 			// 2. validate the header and check the prefix
-			if (header == null || !header.startsWith(prefix)) {
+			if (header == null ) {
 				chain.doFilter(request, response); // If not valid, go to the next filter.
 				return;
 			}

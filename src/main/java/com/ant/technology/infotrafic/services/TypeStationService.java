@@ -2,6 +2,7 @@ package com.ant.technology.infotrafic.services;
 
 import java.util.List;
 
+import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
@@ -17,4 +18,5 @@ public interface TypeStationService {
 
 	public List<TypeStation> findAll();
 	public void store(MultipartFile file) ;
+	public Resource loadFile(String fileName);
 }

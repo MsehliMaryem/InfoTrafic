@@ -14,6 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Transient;
 
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,6 +39,7 @@ public class Personne implements Serializable, UserDetails {
 	private String code;
 
 	private boolean enabled;
+	private boolean activation;
 
 	public long getId() {
 		return id;
@@ -100,6 +102,7 @@ public class Personne implements Serializable, UserDetails {
 	}
 
 	public boolean isEnabled() {
+		
 		return enabled;
 	}
 
@@ -169,6 +172,14 @@ public class Personne implements Serializable, UserDetails {
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+	public boolean isActivation() {
+		return activation;
+	}
+
+	public void setActivation(boolean activation) {
+		this.activation = activation;
 	}
 
 }

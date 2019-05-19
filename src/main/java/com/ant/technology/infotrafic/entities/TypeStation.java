@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -21,6 +22,9 @@ public class TypeStation implements Serializable {
 	private long code;
 	@Column(unique = true, name = "nom_type")
 	private String nomType;
+	
+	private String photo;
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "typeStation")
 	private List<StationService> stationServices;
@@ -42,6 +46,12 @@ public class TypeStation implements Serializable {
 	}
 	public void setNomType(String nomType) {
 		this.nomType = nomType;
+	}
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 

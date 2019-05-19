@@ -93,6 +93,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 				.setExpiration(new Date(System.currentTimeMillis() + expirationTime)) // in milliseconds
 				.signWith(SignatureAlgorithm.HS512, key.getBytes()).compact();
 
-		response.addHeader(header, prefix + token);
+		response.addHeader(header,  token);
 	}
 }

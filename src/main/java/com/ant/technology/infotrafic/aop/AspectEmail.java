@@ -77,7 +77,7 @@ public class AspectEmail {
 					String object = "Code d'activation: "+password;
 					try {
 						System.out.println(email);
-					//	SendEmail.envoyerEmail(email, subject, object);
+					SendEmail.envoyerEmail(email, subject, object);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

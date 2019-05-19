@@ -133,5 +133,24 @@ public class PersonneServiceImpl implements PersonneService {
 
 		return new StringResponse(true, "Code valid");
 	}
+	
+	
+	@Override
+	public StringResponse activateAccount(Personne personne) {
+		Personne pers = personneRepository.getOne((long) personne.getId());
+		
+		if(pers.getCode().equals(personne.getCode())) {
+			pers.setActivation(true);
+			personneRepository.save(pers);
+			return new StringResponse(true, "Compte activé avec succès");
+		}
+		
+		
+		
+
+	
+
+		return new StringResponse(false, "Code invalid");
+	}
 
 }

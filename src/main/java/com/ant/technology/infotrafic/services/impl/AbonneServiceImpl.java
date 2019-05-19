@@ -40,7 +40,7 @@ public class AbonneServiceImpl implements AbonneService {
 		String pwd = bCryptPasswordEncoder.encode(abonnee.getPassword());
 		abonnee.setPassword(pwd);
 		
-		
+		abonnee.setEnabled(true);
 		abonneRepository.save(abonnee);
 
 		return new StringResponseAbonnee(true, "Opération effectuée avec succès", abonnee.getCode(),
