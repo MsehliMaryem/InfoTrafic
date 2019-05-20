@@ -58,6 +58,12 @@ public class StationServiceServiceImpl implements StationServiceService{
 		return stationServiceRepository.findAll();
 	}
 
+	@Override
+	public List<StationService> findByTypeStationCodeIn(List<Long> ids) {
+		// TODO Auto-generated method stub
+		return stationServiceRepository.findByTypeStationCodeIn(ids);
+	}
+
 	
 
 }

@@ -9,4 +9,5 @@ import com.ant.technology.infotrafic.entities.StationService;
 public interface StationServiceRepository extends JpaRepository<StationService, Long> {
 public List<StationService> findByCode(long code);
 public List<StationService> findByNom(String nom);
+public List<StationService> findByTypeStationCodeIn(List<Long> ids);
 }

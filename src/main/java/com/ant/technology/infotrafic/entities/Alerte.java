@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Alerte implements Serializable {
 
@@ -29,10 +31,10 @@ public class Alerte implements Serializable {
 	private double longitude;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_abonnee", nullable = false)
-	private Abonnee abonne;
+	@JoinColumn(name = "id_personne", nullable = false)
+	private Personne personne;
 
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "alerte")
 	private List<SignalAlerte> signalAlertes;
 
@@ -56,12 +58,13 @@ public class Alerte implements Serializable {
 		this.typeAlerte = typeAlerte;
 	}
 
-	public Abonnee getAbonne() {
-		return abonne;
+	
+	public Personne getPersonne() {
+		return personne;
 	}
 
-	public void setAbonne(Abonnee abonne) {
-		this.abonne = abonne;
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
 	}
 
 	public List<SignalAlerte> getSignalAlertes() {

@@ -29,8 +29,8 @@ public class SignalAlerte {
 	@JoinColumn(name = "id_alerte", insertable = false, updatable = false, nullable = false)
 	private Alerte alerte;
 	@ManyToOne
-	@JoinColumn(name = "id_abonne", insertable = false, updatable = false, nullable = false)
-	private Abonnee abonne;
+	@JoinColumn(name = "id_personne", insertable = false, updatable = false, nullable = false)
+	private Personne personne;
 	public SignalAlerteId getId() {
 		return id;
 	}
@@ -49,17 +49,18 @@ public class SignalAlerte {
 	public void setAlerte(Alerte alerte) {
 		this.alerte = alerte;
 	}
-	public Abonnee getAbonne() {
-		return abonne;
-	}
-	public void setAbonne(Abonnee abonne) {
-		this.abonne = abonne;
-	}
+
 	public String getCause() {
 		return cause;
 	}
 	public void setCause(String cause) {
 		this.cause = cause;
+	}
+	public Personne getPersonne() {
+		return personne;
+	}
+	public void setPersonne(Personne personne) {
+		this.personne = personne;
 	}
 	
 	

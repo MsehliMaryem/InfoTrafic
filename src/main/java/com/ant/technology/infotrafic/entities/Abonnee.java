@@ -14,20 +14,7 @@ public class Abonnee extends Personne implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "abonne")
 	private List<DemandeTaxi> demandeTaxis;
-	@JsonIgnore
-	@OneToMany(mappedBy = "abonne")
-	private List<Alerte> alertes;
-	@JsonIgnore
-	@OneToMany(mappedBy = "abonne")
-	private List<SignalAlerte> signalAlertes;
-
-	public List<Alerte> getAlertes() {
-		return alertes;
-	}
-
-	public void setAlertes(List<Alerte> alertes) {
-		this.alertes = alertes;
-	}
+	
 
 	public List<DemandeTaxi> getDemandeTaxis() {
 		return demandeTaxis;
@@ -37,12 +24,5 @@ public class Abonnee extends Personne implements Serializable {
 		this.demandeTaxis = demandeTaxis;
 	}
 
-	public List<SignalAlerte> getSignalAlertes() {
-		return signalAlertes;
-	}
-
-	public void setSignalAlertes(List<SignalAlerte> signalAlertes) {
-		this.signalAlertes = signalAlertes;
-	}
 
 }

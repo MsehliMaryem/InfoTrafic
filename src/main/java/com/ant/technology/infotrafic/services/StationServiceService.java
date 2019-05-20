@@ -16,5 +16,6 @@ public interface StationServiceService {
 	public StringResponse delete(long code);
 
 	public List<StationService> findAll();
+	public List<StationService> findByTypeStationCodeIn(List<Long> ids);
 
 }

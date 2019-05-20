@@ -62,4 +62,10 @@ public class AlerteServiceImpl implements AlerteService {
 		return new StringResponse(true, "Aelerte desactivée avec succès");
 	}
 
+	@Override
+	public List<Alerte> findByTypeAlerteIdTypeIn(List<Long> ids) {
+		// TODO Auto-generated method stub
+		return alerteRepository.findByTypeAlerteIdTypeIn(ids);
+	}
+
 }

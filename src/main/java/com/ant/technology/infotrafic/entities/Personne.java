@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.springframework.security.authentication.DisabledException;
@@ -40,6 +41,28 @@ public class Personne implements Serializable, UserDetails {
 
 	private boolean enabled;
 	private boolean activation;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "personne")
+	private List<Alerte> alertes;
+	@JsonIgnore
+	@OneToMany(mappedBy = "personne")
+	private List<SignalAlerte> signalAlertes;
+
+	public List<Alerte> getAlertes() {
+		return alertes;
+	}
+
+	public void setAlertes(List<Alerte> alertes) {
+		this.alertes = alertes;
+	}
+	public List<SignalAlerte> getSignalAlertes() {
+		return signalAlertes;
+	}
+
+	public void setSignalAlertes(List<SignalAlerte> signalAlertes) {
+		this.signalAlertes = signalAlertes;
+	}
 
 	public long getId() {
 		return id;

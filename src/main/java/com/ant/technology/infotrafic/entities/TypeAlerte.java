@@ -22,6 +22,8 @@ public class TypeAlerte implements Serializable {
 	private long idType;
 	@Column(unique = true)
 	private String nom;
+	
+	private String photo;
 	@JsonIgnore
 	@OneToMany(mappedBy = "typeAlerte")
 	private List<Alerte> alertes;
@@ -49,4 +51,15 @@ public class TypeAlerte implements Serializable {
 	public void setAlertes(List<Alerte> alertes) {
 		this.alertes = alertes;
 	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	
+	
+	
 }

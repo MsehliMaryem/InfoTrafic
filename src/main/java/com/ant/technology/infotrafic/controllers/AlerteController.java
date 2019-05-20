@@ -1,5 +1,6 @@
 package com.ant.technology.infotrafic.controllers;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,20 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ant.technology.infotrafic.dto.StringResponse;
 import com.ant.technology.infotrafic.entities.Alerte;
+import com.ant.technology.infotrafic.entities.StationService;
 import com.ant.technology.infotrafic.services.AlerteService;
 
 @CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping(value = "/alerte")
 public class AlerteController {
-	public AlerteController(AlerteService alerteService) {
-		super();
-		this.alerteService = alerteService;
-	}
+	
 
 	@Autowired
 	private AlerteService alerteService;
@@ -37,6 +37,13 @@ public class AlerteController {
 
 		return alerteService.findAll();
 	}
+	
+	@GetMapping("/findByType")
+	public List<Alerte> findByTypeStation(@RequestParam("ids") Long[] ids) {
+
+		return alerteService.findByTypeAlerteIdTypeIn(Arrays.asList(ids));
+	}
+	
 	@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
 	@PostMapping
 	public StringResponse save(@RequestBody Alerte alerte) {
