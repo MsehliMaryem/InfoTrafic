@@ -37,26 +37,30 @@ public class AlerteController {
 
 		return alerteService.findAll();
 	}
-	
+	@GetMapping("/enable")
+	public List<Alerte> findEnableAlerte() {
+
+		return alerteService.findEnableAlerte();
+	}
 	@GetMapping("/findByType")
 	public List<Alerte> findByTypeStation(@RequestParam("ids") Long[] ids) {
 
 		return alerteService.findByTypeAlerteIdTypeIn(Arrays.asList(ids));
 	}
 	
-	@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
+	//@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
 	@PostMapping
 	public StringResponse save(@RequestBody Alerte alerte) {
 
 		return alerteService.save(alerte);
 	}
-	@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
+	//@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
 	@PutMapping
 	public StringResponse update(@RequestBody Alerte alerte) {
 
 		return alerteService.update(alerte);
 	}
-	@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
+//	@PreAuthorize("hasRole('ROLE_Abonnee') or hasRole('ROLE_ChauffeurTaxi')")
 	@DeleteMapping(value = "/{code}")
 	public StringResponse delete(@PathVariable("code") long code) {
 

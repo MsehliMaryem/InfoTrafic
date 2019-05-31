@@ -41,16 +41,16 @@ public class TypeStationServiceImpl implements TypeStationService {
 
 	@Override
 	public StringResponse update(TypeStation typeStatation) {
-		List<TypeStation> list = typeStationRepository.findByNomTypeAndCode(typeStatation.getNomType(),
-				typeStatation.getCode());
-		if (!list.isEmpty()) {
-			return new StringResponse(false, "Aucune modification detecté");
-		}
+//		List<TypeStation> list = typeStationRepository.findByNomTypeAndCode(typeStatation.getNomType(),
+//				typeStatation.getCode());
+//		if (!list.isEmpty()) {
+//			return new StringResponse(false, "Aucune modification detecté");
+//		}
 
-		list = typeStationRepository.findByNomType(typeStatation.getNomType());
-		if (!list.isEmpty()) {
-			return new StringResponse(false, "Nom type station déja existe");
-		}
+//		list = typeStationRepository.findByNomType(typeStatation.getNomType());
+//		if (!list.isEmpty()) {
+//			return new StringResponse(false, "Nom type station déja existe");
+//		}
 
 		typeStationRepository.save(typeStatation);
 		

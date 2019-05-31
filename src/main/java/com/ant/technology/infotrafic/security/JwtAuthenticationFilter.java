@@ -33,6 +33,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	@Autowired
 	private UsersService usersService;
+	
 	private AuthenticationManager authenticationManager;
 	@Value("${jwt.signing-key}")
 	private String key;

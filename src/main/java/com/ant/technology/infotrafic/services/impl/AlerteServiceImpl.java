@@ -68,4 +68,10 @@ public class AlerteServiceImpl implements AlerteService {
 		return alerteRepository.findByTypeAlerteIdTypeIn(ids);
 	}
 
+	@Override
+	public List<Alerte> findEnableAlerte() {
+		// TODO Auto-generated method stub
+		return alerteRepository.findByEnabled(true);
+	}
+
 }

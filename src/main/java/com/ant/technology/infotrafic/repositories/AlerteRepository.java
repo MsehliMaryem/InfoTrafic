@@ -11,4 +11,5 @@ public interface AlerteRepository extends JpaRepository<Alerte, Long> {
 public List<Alerte> findByIdAlerte(long id);
 public List <Alerte> findBySignalAlertesIsNotNull();
 public List<Alerte> findByTypeAlerteIdTypeIn(List<Long> ids);
+public List <Alerte> findByEnabled(boolean enable);
 }
